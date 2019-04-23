@@ -70,7 +70,7 @@ export default class RelayNetworkLayer {
       const req = new RelayRequest(operation, variables, cacheConfig, uploadables);
 
       let controller = null;
-      if (window.AbortController) {
+      if (typeof window !== 'undefined' && window.AbortController) {
         controller = new window.AbortController();
         req.fetchOpts.signal = controller.signal;
       }
